@@ -1,4 +1,4 @@
 package com.gcash;
 
-public record Account(String id, String name, Double amount) {
+public record Account(String id, String name, Double balance) {
 }
