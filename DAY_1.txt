@@ -1,0 +1,155 @@
+===================================================================================================
+
+ __          __  _                            _               _ _    _       _ _     __  ___  __ 
+ \ \        / / | |                          | |             | | |  | |     (_) |   /_ |/ _ \/_ |
+  \ \  /\  / /__| | ___ ___  _ __ ___   ___  | |_ ___        | | |  | |_ __  _| |_   | | | | || |
+   \ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \   _   | | |  | | '_ \| | __|  | | | | || |
+    \  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) | | |__| | |__| | | | | | |_   | | |_| || |
+     \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/   \____/ \____/|_| |_|_|\__|  |_|\___/ |_|
+                                                                                                 
+- Coach Orvyl | Apper.ph
+
+ ______   _______  __   __    ____  
+|      | |   _   ||  | |  |  |    | 
+|  _    ||  |_|  ||  |_|  |   |   | 
+| | |   ||       ||       |   |   | 
+| |_|   ||       ||_     _|   |   | 
+|       ||   _   |  |   |     |   | 
+|______| |__| |__|  |___|     |___| 
+
+👉 Understanding JUnit Library
+👉 Setting up for creating unit tests in java in IntelliJ IDE
+👉 Create unit tests in a class
+👉 Assertions
+
+
+===================================================================================================
+
+
+👉 Understanding JUnit Library
+
+What is JUnit
+* Most widely used unit testing library for Java
+    - Provide tools to verify results from the code under test
+
+
+Well first, what is UNIT TESTING?
+
+
+===================================================================================================
+
+
+UNIT TESTING is a type of software testing where individual units or components of a software are
+tested.
+
+The purpose is to validate that each unit of the software code performs as expected.
+
+Unit Testing is done during the development (coding phase) of an application by the developers.
+
+Unit Tests isolate a section of code and verify its correctness.
+
+A unit may be an individual function, method, procedure, module, or object.
+
+LEVELS of TESTING
+> Unit Test         : per component
+Integration Test    : test integrated components 
+System Test         : checking system’s compliance as per the requirements.
+Acceptance          : Acceptance testing is done by the user, customer, and/or stockholders
+
+
+===================================================================================================
+
+
+👉 Setting up for creating unit tests in java in IntelliJ IDE
+
+JUnit 5 : https://junit.org/junit5/
+
+Understanding JUnit Library
+* Java project dependency (JAR)
+* Need to be on classpath
+
+Create a maven project ...
+
+Installing and running JUnit: https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven
+[dependency] junit-jupiter-api
+[plugin] maven-surefire-plugin
+[plugin] maven-failsafe-plugin
+
+mvn install
+
+===================================================================================================
+
+
+👉 Create unit tests in a class
+
+When to test?
+* Soon.
+* So soon, maybe even before the production code is written
+
+Checkout: https://github.com/orvyl/apper-junit-otumaneng
+
+Common Test Steps
+* Setup 
+* Kick
+* Verify 
+
+
+===================================================================================================
+
+
+📄 QUIZ 1
+
+apper-junit-<yourname>/
+    src/
+    pom.xml
+    quiz.txt
+
+Email you repo link
+    * SUBJECT: [JUnit | Day1 | Quiz1] <yourname>
+
+===================================================================================================
+
+
+🥳🙌🏽🎉 Laboratory/Assignment 🥳🙌🏽🎉
+
+Implement BalanceService and add unit tests.
+Code Coverage must be 100%
+Email you repo link
+    * SUBJECT: [JUnit | Day1 | Lab1] <yourname>
+Deadline: June 12 11:59PM
+oftumaneng@apper.ph
+
+
+===================================================================================================
+
+
+📺 Commercial 📺
+
+Life Coaching + #AHEB2023
+✅ Purposology Coaching Program
+✅ Life Zones Coaching Program
+✅ Rising-Self Coaching Program
+✅ Effortless Action Coaching Program
+✅ Health And Vitality Breakthrough Coaching Program
+✅ Mindful Parenting Coaching Program
+✅ Relationship Rescue Coaching Program
+✅ Relationship-DETOX Coaching Program
+✅ Clutter-FREE Mind Coaching Program
+✅ Poverty-FREE Living Coaching Program
+✅ Business Growth Breakthrough Coaching Program
+✅ Become A Master Strategist Coaching Program
+
+https://bit.ly/IslandOfTheLost
+
+===================================================================================================
+
+
+👉 Assertions
+
+* assert equality and identity
+* assert boolean
+* assert collections
+* assert exception (assertThrows)
+* group assertions
+
+===================================================================================================
