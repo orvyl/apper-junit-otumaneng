@@ -3,6 +3,8 @@ package com.gcash;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class AccountRepository {
     private final List<Account> accounts = new ArrayList<>();
@@ -39,5 +41,12 @@ public class AccountRepository {
     // No test. Create one
     public boolean noRegisteredAccount() {
         return accounts.isEmpty();
+    }
+
+    public List<String> getAllAccountNames() {
+        return accounts
+                .stream()
+                .map(Account::getName)
+                .collect(Collectors.toList());
     }
 }

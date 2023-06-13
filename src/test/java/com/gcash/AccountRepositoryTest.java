@@ -4,6 +4,9 @@ package com.gcash;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AccountRepositoryTest {
 
     @Test
@@ -61,5 +64,33 @@ public class AccountRepositoryTest {
 
         //Verify
         Assertions.assertEquals(3, repository.getNumberOfAccounts());
+    }
+
+    @Test
+    void noRegisteredAccount() {
+        AccountRepository accountRepository = new AccountRepository();
+
+        Assertions.assertTrue(accountRepository.noRegisteredAccount());
+    }
+
+    @Test
+    void getAllAccountNames() {
+        AccountRepository accountRepository = new AccountRepository();
+        accountRepository.createAccount("Orvyl", 100.0);
+        accountRepository.createAccount("Eishi", 100.0);
+        accountRepository.createAccount("James", 100.0);
+        accountRepository.createAccount("Janet", 100.0);
+        accountRepository.createAccount("John", 100.0);
+
+        List<String> allAccountNames = accountRepository.getAllAccountNames();
+
+        List<String> expectedNames = new ArrayList<>();
+        expectedNames.add("Orvyl");
+        expectedNames.add("Eishi");
+        expectedNames.add("James");
+        expectedNames.add("Janet");
+        expectedNames.add("John");
+
+        Assertions.assertIterableEquals(expectedNames, allAccountNames);
     }
 }
