@@ -1,16 +1,42 @@
 package com.gcash;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 public class BalanceServiceTest {
 
+    AccountRepository accountRepository;
+    BalanceService balanceService;
+
+    @BeforeEach
+    void setup() {
+        System.out.println("Setting up...");
+        accountRepository = new AccountRepository();
+        balanceService = new BalanceService(accountRepository);
+    }
+
+    @AfterEach
+    void cleanup() {
+        System.out.println("Cleaning up...");
+        accountRepository.deleteAllAccounts();
+    }
+
+    @BeforeAll
+    static void globalSetup() {
+        System.out.println("Global setup");
+    }
+
+    @AfterAll
+    static void globalCleaning() {
+        System.out.println("Global cleaning");
+    }
+
     @Test
     void testGetBalance() throws AccountNotFoundException {
-        AccountRepository accountRepository = new AccountRepository();
-        BalanceService balanceService = new BalanceService(accountRepository);
-
         double initialBalance = 1000.0;
         String id = accountRepository.createAccount("Orvyl", initialBalance);
 
@@ -21,9 +47,6 @@ public class BalanceServiceTest {
 
     @Test
     void testGetBalanceAccountNotFound() {
-        AccountRepository accountRepository = new AccountRepository();
-        BalanceService balanceService = new BalanceService(accountRepository);
-
         double initialBalance = 1000.0;
         accountRepository.createAccount("Orvyl", initialBalance);
 
@@ -32,9 +55,6 @@ public class BalanceServiceTest {
 
     @Test
     void testDebit() throws InsufficientBalanceException, AccountNotFoundException {
-        AccountRepository accountRepository = new AccountRepository();
-        BalanceService balanceService = new BalanceService(accountRepository);
-
         double initialBalance = 1000.0;
         String id = accountRepository.createAccount("Orvyl", initialBalance);
 
@@ -48,9 +68,6 @@ public class BalanceServiceTest {
 
     @Test
     void testDebitInsufficientBalance() {
-        AccountRepository accountRepository = new AccountRepository();
-        BalanceService balanceService = new BalanceService(accountRepository);
-
         double initialBalance = 1000.0;
         String id = accountRepository.createAccount("Orvyl", initialBalance);
 
@@ -60,9 +77,6 @@ public class BalanceServiceTest {
 
     @Test
     void testDebitAccountNotFound() {
-        AccountRepository accountRepository = new AccountRepository();
-        BalanceService balanceService = new BalanceService(accountRepository);
-
         double initialBalance = 1000.0;
         String id = accountRepository.createAccount("Orvyl", initialBalance);
 
@@ -72,9 +86,6 @@ public class BalanceServiceTest {
 
     @Test
     void testTransfer() throws InsufficientBalanceException, AccountNotFoundException {
-        AccountRepository accountRepository = new AccountRepository();
-        BalanceService balanceService = new BalanceService(accountRepository);
-
         double initialBalance = 1000.0;
         String id0 = accountRepository.createAccount("Orvyl", initialBalance);
         String id1 = accountRepository.createAccount("Eishi", initialBalance);
@@ -82,11 +93,9 @@ public class BalanceServiceTest {
         double transferAmount = 50.0;
         balanceService.transfer(id0, id1, transferAmount);
 
-        Assertions.assertAll(() -> Assertions.assertEquals(
-                initialBalance - transferAmount,
-                accountRepository.getAccount(id0).getBalance()),
-                () -> Assertions.assertEquals(
-                        initialBalance + transferAmount,
-                        accountRepository.getAccount(id1).getBalance()));
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(initialBalance - transferAmount, accountRepository.getAccount(id0).getBalance()),
+                () -> Assertions.assertEquals(initialBalance + transferAmount, accountRepository.getAccount(id1).getBalance())
+        );
     }
 }
