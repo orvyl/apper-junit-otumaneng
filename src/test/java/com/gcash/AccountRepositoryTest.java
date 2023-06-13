@@ -16,7 +16,7 @@ public class AccountRepositoryTest {
 
         // Verify
         Assertions.assertEquals(1, repository.getNumberOfAccounts());
-        Assertions.assertEquals("Orvyl", repository.getAccount(accountId).name());
+        Assertions.assertEquals("Orvyl", repository.getAccount(accountId).getName());
         Assertions.assertNotNull(accountId);
     }
 
@@ -26,8 +26,8 @@ public class AccountRepositoryTest {
 
         String accountId = repository.createAccount("Orvyl", 89.9);
 
-        Assertions.assertEquals("Orvyl", repository.getAccount(accountId).name());
-        Assertions.assertEquals(89.9, repository.getAccount(accountId).balance());
+        Assertions.assertEquals("Orvyl", repository.getAccount(accountId).getName());
+        Assertions.assertEquals(89.9, repository.getAccount(accountId).getBalance());
         Assertions.assertNull(repository.getAccount("randomid"));
     }
 
